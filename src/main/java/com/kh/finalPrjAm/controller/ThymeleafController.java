@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping("/thymeleaf")
+@RequestMapping("/thymeleaf1")
 public class ThymeleafController {
     @GetMapping("/item")
     public String thymeleafItem(Model model) {
@@ -46,5 +46,9 @@ public class ThymeleafController {
         model.addAttribute("param1", param1);
         model.addAttribute("param2", param2);
         return "thymeleaf/thymeleafLinkParam";
+    }
+    @GetMapping("/layout")
+    public String thymeleafLayoutEx() {
+        return "thymeleaf/layoutEx01";
     }
 }

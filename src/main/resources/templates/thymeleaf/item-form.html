@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <title>새 상품 등록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #CCC;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        select {
+            height: 40px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #FFF;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>새 상품 등록</h1>
+    <form action="/thymeleaf/items" method="post" th:object="${item}">
+        <div>
+            <label for="itemNm">상품명:</label>
+            <input type="text" id="itemNm" name="itemNm" required="required" th:field="*{itemNm}" />
+        </div>
+        <div>
+            <label for="price">가격:</label>
+            <input type="number" id="price" name="price" required="required" th:field="*{price}" />
+        </div>
+        <div>
+            <label for="stockNumber">재고 수량:</label>
+            <input type="number" id="stockNumber" name="stockNumber" required="required" th:field="*{stockNumber}" />
+        </div>
+        <div>
+            <label for="itemDetail">상품 상세 설명:</label>
+            <textarea id="itemDetail" name="itemDetail" required="required" th:field="*{itemDetail}"></textarea>
+        </div>
+        <div>
+            <label for="itemSellStatus">판매 상태:</label>
+            <select id="itemSellStatus" name="itemSellStatus" th:field="*{itemSellStatus}">
+                <option value="SELL">판매 중</option>
+                <option value="SOLD_OUT">품절</option>
+            </select>
+        </div>
+        <div>
+            <input type="submit" value="저장" />
+        </div>
+    </form>
+</div>
+</body>
